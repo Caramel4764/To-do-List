@@ -23,11 +23,13 @@ function capitalize(word) {
     return wordSpliced;
 }
 function addItem(){
-    let newItem = document.createElement("li");
-    let text = capitalize(textInput.value);
-    newItem.innerHTML = text;
-    itemList.appendChild(newItem);
-    textInput.value = "";
+    if (textInput.value != "") {
+        let newItem = document.createElement("li");
+        let text = capitalize(textInput.value);
+        newItem.innerHTML = text;
+        itemList.appendChild(newItem);
+        textInput.value = "";
+    }
 }
 function dragElement(elmnt) {
   var xf = 0, yf = 0, xi = 0, yi = 0;
