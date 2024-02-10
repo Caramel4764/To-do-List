@@ -3,12 +3,16 @@ const textInput = document.getElementById("textInput");
 const addButton = document.getElementById("addButton")
 dragElement(document.getElementById("addMenu"));
 
+//inital task
+addItem("Double click to delete me");
+addItem("Add items using the menu to the right");
+
 addButton.addEventListener("click", function() {
-    addItem();
+    addItem(textInput.value);
 });
 document.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
-        addItem();
+        addItem(textInput.value);
     }
 });
 function capitalize(word) {
@@ -22,10 +26,13 @@ function capitalize(word) {
     }
     return wordSpliced;
 }
-function addItem(){
-    if (textInput.value != "") {
+function addItem(taskName){
+    if (taskName != "") {
         let newItem = document.createElement("li");
-        let text = capitalize(textInput.value);
+        let text = capitalize(taskName);
+        newItem.addEventListener("dblclick", function(){
+            newItem.remove();
+        });
         newItem.innerHTML = text;
         itemList.appendChild(newItem);
         textInput.value = "";

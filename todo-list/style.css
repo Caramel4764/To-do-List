@@ -1,21 +1,34 @@
+body {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
+  
 li:hover{
-    color:red;
-    text-decoration: line-through;
+    background-color: #EEE;
+}
+li {
+    font-size:22px;
+    padding: 5px;
+    width:40%;
+    list-style-type: none;
 }
 #addMenu {
-    width:18.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width:20em;
     padding:1.5em;
     height:10em;
     border:4px gray dashed;
     position:absolute;
+    background-color:white;
+    z-index:20;
     left:50%;
     top:5em;
-    
 }
 #textInput {
     width:15em;
     height:37px;
-    font-size:1em;
+    font-size:1.1em;
 }
 #addButton {
     width:40px;
