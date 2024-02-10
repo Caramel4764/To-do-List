@@ -1,0 +1,16 @@
+li:hover{
+    color:red;
+    text-decoration: line-through;
+}
+#addMenu {
+    width:20em;
+    height:20em;
+    background-color:yellow;
+    position:absolute;
+    left:50%;
+    top:5em;
+}
+#itemListDiv {
+    margin-left:2em;
+    margin-top:4em;
+}
