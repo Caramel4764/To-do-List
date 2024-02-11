@@ -1,11 +1,24 @@
 const itemList = document.getElementById("itemList");
 const textInput = document.getElementById("textInput");
-const addButton = document.getElementById("addButton")
+const addButton = document.getElementById("addButton");
+const addMenu = document.getElementById("addMenu");
+let browserWidth  = window.innerWidth || document.documentElement.clientWidth || 
+document.body.clientWidth;
+let browserHeight = window.innerHeight|| document.documentElement.clientHeight|| 
+document.body.clientHeight;
 dragElement(document.getElementById("addMenu"));
 
 //inital task
 addItem("Double click to delete me");
 addItem("Add items using the menu to the right");
+
+//checks for window resize. If it happens, update window size
+window.addEventListener('resize', function () {
+  browserWidth  = window.innerWidth || document.documentElement.clientWidth || 
+  document.body.clientWidth;
+  browserHeight = window.innerHeight|| document.documentElement.clientHeight|| 
+  document.body.clientHeight;
+});
 
 addButton.addEventListener("click", function() {
     addItem(textInput.value);
@@ -56,9 +69,16 @@ function dragElement(elmnt) {
     //get new inital mouse position
     xi = e.clientX;
     yi = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - yf) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - xf) + "px";
+    //box stays inside brower (x-coord)
+    if ((elmnt.offsetLeft - xf) >= 0 && (elmnt.offsetLeft - xf) <= (browserWidth - addMenu.offsetWidth)) {
+      // set the element's new x position:
+      elmnt.style.left = (elmnt.offsetLeft - xf) + "px";
+    }
+    //box stays inside brower (y-coord)
+    if ((elmnt.offsetTop - yf) >= 0 && (elmnt.offsetTop - yf) <= (browserHeight - addMenu.offsetHeight)) {
+      // set the element's new y position:
+      elmnt.style.top = (elmnt.offsetTop - yf) + "px";
+    }
   }
   function closeDragElement() {
     //no more events
